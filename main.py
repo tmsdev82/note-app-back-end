@@ -1,6 +1,8 @@
 import os
 import json
 
+from typing import List
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -33,7 +35,7 @@ async def read_root():
     return sample_data
 
 
-@app.get("/notes")
+@app.get("/notes", response_model=List[Note])
 async def get_notes():
     if not os.path.isfile(DATA_FILENAME):
         print("No data found!")
@@ -44,7 +46,7 @@ async def get_notes():
         return note_data
 
 
-@app.post("/notes")
+@app.post("/notes", status_code=201)
 async def add_notes(new_note: Note):
     current_note_data = []
     if os.path.isfile(DATA_FILENAME):
