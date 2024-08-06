@@ -1,1 +1,1 @@
-[{"title": "another note title", "content": "This note data is validated by Pydantic"}]
+[{"title": "another note title", "content": "This note data is 2 validated by Pydantic"}, {"title": "new note", "content": "testing adding with form"}]
